@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find bot_description)/urdf/bot_description.xacro'"/>
+<param name="robot_description" command="$(find xacro)/xacro --inorder '$(find bot_description)/urdf/bot2.xacro'"/>
 <include file="$(find gazebo_ros)/launch/empty_world.launch" />
 <arg name="x" default="0"/>
 <arg name="y" default="0"/>
