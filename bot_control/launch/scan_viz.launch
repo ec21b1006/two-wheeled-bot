@@ -1,0 +1,16 @@
+<launch>
+    <node pkg="bot_control" type="reader_laser.py" name="scan_values" output="screen">
+    </node>
+    	<param name="robot_description" command="$(find xacro)/xacro $(find bot_description)/urdf/bot_description.xacro" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  </node>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find bot_control)/default.rviz" required="true" />
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" />
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0"/>
+
+    <node name="manas_bot_spawn" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -param robot_description -model manas_bot -x $(arg x) -y $(arg y) -z $(arg z)"/>
+</launch>

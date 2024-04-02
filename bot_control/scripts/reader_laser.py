@@ -4,7 +4,9 @@ import rospy
 from sensor_msgs.msg import LaserScan
 
 def callback(msg):
-    filtered_ranges = msg.ranges[:120] 
+    filtered_ranges = msg.ranges[120:240] 
+    msg.angle_min = -1.0467
+    msg.angle_max = 1.0467
     filtered_msg = LaserScan(
         header=msg.header,
         angle_min=msg.angle_min,
